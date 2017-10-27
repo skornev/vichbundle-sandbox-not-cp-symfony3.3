@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Vich Test {% endblock %}
+{% block content %}
+    {% block body %}
+        <div id="wrapper">
+            <div id="container">
+
+                Vich
+                <a href="{{ path("vich_new") }}">New </a>
+                <table>
+                    {# @var invoice \AppBundle\Entity\Invoice #}
+                    {% for invoice in invoices %}
+                        <tr>
+                            <td>{{ invoice.id }}</td>
+                            <td>{{ invoice.number }}</td>
+                            <td><a href="{{ path("vich_edit",  { 'id': invoice.id}) }}">edit</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
+

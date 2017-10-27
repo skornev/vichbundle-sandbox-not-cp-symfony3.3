@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}Vich Form {% endblock %}
+{% block content %}
+    {% block body %}
+        <div id="wrapper">
+            <div id="container">
+
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script>
+
+
+            var attachments = '{{ form.attachments|length }}';
+
+            jQuery(document).ready(function () {
+                jQuery('#invoice_addInvoiceAttachment').click(function (e) {
+                    e.preventDefault();
+
+
+                    var ia = jQuery('#invoice_attachments, #invoice_digi_key_attachments');
+//
+                    // grab the prototype template
+                    var newWidget = ia.attr('data-prototype');
+                    // replace the "__name__" used in the id and name of the prototype
+                    // with a number that's unique to your emails
+                    // end name attribute looks like name="contact[emails][2]"
+                    newWidget = newWidget.replace(/__name__label__/g, attachments);
+                    newWidget = newWidget.replace(/__name__/g, attachments);
+                    newWidget.className += " file-inputs";
+                    attachments++;
+
+                    var el = $(newWidget);
+                    $('#invoice_addInvoiceAttachment, #invoice_digi_key_addInvoiceAttachment').before(el);
+
+
+                });
+            })
+
+
+        </script>
+
+
+    {% endblock %}
+{% endblock %}
+
