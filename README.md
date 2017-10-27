@@ -8,3 +8,10 @@ GRANT ALL PRIVILEGES ON vich.* TO 'vich'@'%' ;
 FLUSH PRIVILEGES;
 `
 
+Uncomment the following lines in InvoiceAttachmentType to make it work
+
+`
+//            ->add('originalName', HiddenType::class, [
+//                'required' => false
+//            ])
+`
