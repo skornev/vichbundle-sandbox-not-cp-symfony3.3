@@ -15,3 +15,5 @@ Uncomment the following lines in **InvoiceAttachmentType** to make it work
 //                'required' => false
 //            ])
 `
+
+Go to http://server/vich/
